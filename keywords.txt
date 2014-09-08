@@ -1,0 +1,7 @@
+HttpClient KEYWORD1
+http_resp_read_code KEYWORD2
+http_resp_read_next_header_key KEYWORD2
+http_resp_read_next_header_value KEYWORD2
+httpRespMoveToEOL KEYWORD2
+httpWaitForResponse KEYWORD2
+httpRead KEYWORD2
