@@ -1,7 +1,25 @@
-HttpClient KEYWORD1
-http_resp_read_code KEYWORD2
-http_resp_read_next_header_key KEYWORD2
-http_resp_read_next_header_value KEYWORD2
-httpRespMoveToEOL KEYWORD2
-httpWaitForResponse KEYWORD2
-httpRead KEYWORD2
+HttpClient	KEYWORD1
+
+sendGet	KEYWORD2
+readResponseCode	KEYWORD2
+readNextHeaderKey	KEYWORD2
+readNextHeaderValue	KEYWORD2
+skipHeaders	KEYWORD2
+moveToEOL	KEYWORD2
+available	KEYWORD2
+waitForResponse	KEYWORD2
+httpRead	KEYWORD2
+reset	KEYWORD2
+setTimeout	KEYWORD2
+setDebug	KEYWORD2
+connect	KEYWORD2
+
+print	KEYWORD2
+println	KEYWORD2
+
+HTTP_EOF	LITERAL1
+HTTP_ERROR	LITERAL1		
+HTTP_ERROR_BUFFER_OVERFLOW	LITERAL1
+HTTP_ERROR_TIMEOUT	LITERAL1
+HTTP_ERROR_CONNECTION_FAILED	LITERAL1
+HTTP_DEFAULT_TIMEOUT	LITERAL1
