@@ -2,8 +2,7 @@ HttpClient	KEYWORD1
 
 sendGet	KEYWORD2
 readResponseCode	KEYWORD2
-readNextHeaderKey	KEYWORD2
-readNextHeaderValue	KEYWORD2
+readLineToChar	KEYWORD2
 skipHeaders	KEYWORD2
 moveToEOL	KEYWORD2
 available	KEYWORD2
@@ -13,6 +12,7 @@ reset	KEYWORD2
 setTimeout	KEYWORD2
 setDebug	KEYWORD2
 connect	KEYWORD2
+error	KEYWORD2
 
 print	KEYWORD2
 println	KEYWORD2
