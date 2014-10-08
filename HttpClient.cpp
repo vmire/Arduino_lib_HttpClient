@@ -34,26 +34,30 @@ void HttpClient::setDebug(boolean d){
  *	HTTP_ERROR_CONNECTION_FAILED si la conexion a échoué
  */
 int HttpClient::sendGet(char* server, int port, char* path, char* params){
-	if(debug) Serial.print(F("HttpClient.sendGet "));
-	
+	if(debug){
+		Serial.print(F("HttpClient.sendGet http://"));
+		Serial.print(server);
+		Serial.print(":");
+		Serial.print(port,DEC);
+		Serial.print(path);
+		if(params[0]!='\0'){
+			Serial.print("?");
+			Serial.print(params);
+		}
+		Serial.println("");
+	}
 	if( !connect(server, port) ){
 		return error(HTTP_ERROR_CONNECTION_FAILED);
 	}
 	print("GET ");
 	print(path);
-	if(debug) Serial.print(path);
 	if(params[0]!='\0'){
 		print("?");
 		print(params);
-		if(debug){
-			Serial.print("?");
-			Serial.print(params);
-		}
 	}
 	print(" HTTP/1.1\nHost: ");
 	println(server);
 	println("Connection: close\n");
-	if(debug) Serial.print("\n");
 	status = HTTP_STATUS_RESP_WAIT;
 	return 0;
 }
@@ -213,7 +217,6 @@ int HttpClient::skipHeaders(){
 }
 
 int HttpClient::moveToEOL(){
-	if(debug) Serial.println(F("HttpClient.moveToEOL"));
 	if(status==HTTP_STATUS_IDLE){
 		//La réponse n'a pas commencé
 		if(debug) Serial.println("Error: Status not IDLE");
