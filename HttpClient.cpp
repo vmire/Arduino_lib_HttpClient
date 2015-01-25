@@ -106,6 +106,7 @@ boolean HttpClient::connect(char* serv, int port){
  *	@return int code réponse
  *		 HTTP_ERROR s'il y a eu une erreur
  *		 HTTP_ERROR_TIMEOUT si le timeout a été dépassé
+ *               HTTP_ERROR_STATUS status du client est anormal
  */
 int HttpClient::readResponseCode(){
 	if(debug) Serial.print(F("HttpClient.readResponseCode..."));
@@ -123,14 +124,20 @@ int HttpClient::readResponseCode(){
 		if(c<0) return c;	//C'est une erreur
 		
 		if(charIdx<=8){
+			if(debug) Serial.print(c);
 			//Vérification du "HTTP/1.1 "
-			if(c!=intro[charIdx]){
+			if(c==intro[charIdx] || (charIdx==7 && c=='0')){
+				//OK
+			}
+			else{
+				if(debug) Serial.print(F(": HTTP/1.1 not verified"));
 				return error(HTTP_ERROR);
 			}
 		}
 		else if(charIdx<=11){
 			//Lecture du code réponse
 			if(c<'0' || c >'9'){
+				if(debug) Serial.print(F("Invalid char (")); Serial.print(charIdx); Serial.print("):"); Serial.print(c);
 				return error(HTTP_ERROR);
 			}
 			int tmp = 1;
